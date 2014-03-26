@@ -1,0 +1,43 @@
+go :- write('\nEnter Name:'),
+      read(Name),
+
+      write('\nEnter Year:'),
+      read(Year),
+
+      write('\nEnter Month:'),
+      read(Month),
+      
+      write('\nEnter Date: '),
+      read(Date),
+   
+      calculate(Year,Age),nl,
+      write('Age is: '),write(Age),
+
+      write_sign(Month,Date,Sign),
+      write('Sign is: '),write(Sign),
+
+      assert(playerInfo(Name,Year,Month,Date,Age,Sign)).
+
+
+
+
+
+
+calculate(Year,Age) :- Age is 2014-Year.
+
+write_sign(Month,Date,Sign) :-
+	
+
+	(Month =:= 01,Date @=< 19)->Sign == 'capricorn';
+	(Month =:= 01,Date @>= 20)->Sign=='aquarius';
+	(Month =:= 02,Date @=< 18)->Sign=='aquarius';
+	(Month =:= 02,Date @>= 19, Date @=<28)->Sign=='pisces';
+	(Month =:= 03,Date @=< 20)->Sign=='pisces';
+	(Month =:= 03,Date @>= 21)->Sign=='aries';
+	(Month =:= 04,Date @=< 19)->Sign=='aries';
+	(Month =:= 04,Date @>= 20)->Sign=='taurus';
+	(Month =:= 05,Date @=< 20)->Sign=='taurus';
+	(Month =:= 05,Date @>= 21)->Sign=='gemini'.
+
+display:- listing(playerInfo).
+              
